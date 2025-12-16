@@ -1,10 +1,8 @@
-node_modules/
+node_modules
 .env
-.env.local
-.next/
-dist/
-build/
+.next
+dist
+coverage
 .DS_Store
-*.log
-coverage/
-.vscode/
+.vscode
+.gemini
