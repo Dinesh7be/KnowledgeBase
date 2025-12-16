@@ -1,0 +1,72 @@
+IT Support Guide
+================
+
+COMPUTER ISSUES
+---------------
+
+Slow Computer:
+1. Restart your computer first - this fixes most issues.
+2. Close unnecessary applications and browser tabs.
+3. Check if Windows updates are pending.
+4. If still slow, submit a ticket to IT for hardware check.
+
+Forgotten Password:
+1. Click "Forgot Password" on the login screen.
+2. Enter your company email address.
+3. Check your email for the reset link (check spam folder).
+4. If no email received within 10 minutes, contact IT helpdesk at ext. 5555.
+
+VPN Connection Issues:
+1. Ensure you are connected to the internet.
+2. Close and reopen the VPN client.
+3. Try connecting to a different VPN server.
+4. Check if your VPN credentials have expired (valid for 90 days).
+5. Contact IT if issue persists.
+
+EMAIL PROBLEMS
+--------------
+
+Cannot Send Emails:
+1. Check your internet connection.
+2. Verify the recipient email address is correct.
+3. Check if attachment size exceeds 25MB limit.
+4. Try using webmail at mail.company.com as alternative.
+
+Missing Emails:
+1. Check your spam/junk folder.
+2. Verify email rules haven't moved the message.
+3. Check if storage quota is full (limit: 50GB).
+4. Contact IT to check server-side issues.
+
+SOFTWARE REQUESTS
+-----------------
+
+To request new software:
+1. Submit a request through the IT portal at it.company.com.
+2. Include business justification for the software.
+3. IT will review within 3 business days.
+4. Approved software will be installed within 5 business days.
+
+Note: Only approved software from the company catalog can be installed.
+Unauthorized software installation is a policy violation.
+
+HARDWARE SUPPORT
+----------------
+
+For hardware issues (keyboard, mouse, monitor):
+- Submit a ticket through the IT portal.
+- IT will respond within 24 hours.
+- Replacement equipment is provided same-day if available.
+
+For laptop repairs:
+- Backup your data before submitting for repair.
+- Repairs typically take 3-5 business days.
+- Loaner laptops are available upon request.
+
+CONTACT INFORMATION
+-------------------
+
+IT Helpdesk: ext. 5555
+Email: it-support@company.com
+Portal: it.company.com
+Hours: Monday-Friday, 8:00 AM - 7:00 PM

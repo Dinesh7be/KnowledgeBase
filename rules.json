@@ -1,0 +1,168 @@
+{
+  "project": {
+    "name": "Private Knowledge Base Chatbot",
+    "mode": "production",
+    "ragType": "strict"
+  },
+  "frontend": {
+    "framework": "Next.js",
+    "router": "App Router",
+    "language": "TypeScript",
+    "styling": "Tailwind CSS",
+    "rules": [
+      "Use App Router with server components where possible",
+      "Client components only when interactivity needed",
+      "All API calls go through backend - never call OpenAI directly",
+      "Use React Query or SWR for data fetching",
+      "Implement proper loading and error states",
+      "Mobile-responsive design required"
+    ]
+  },
+  "backend": {
+    "runtime": "Node.js",
+    "framework": "Fastify",
+    "language": "TypeScript",
+    "rules": [
+      "Use Fastify for better performance over Express",
+      "Implement proper TypeScript types for all endpoints",
+      "Use Zod for request/response validation",
+      "Environment variables for all secrets",
+      "Structured logging with pino",
+      "Graceful error handling with proper HTTP codes"
+    ]
+  },
+  "ai": {
+    "provider": "OpenAI",
+    "embeddingModel": "text-embedding-3-large",
+    "completionModel": "gpt-4o-mini",
+    "rules": [
+      "Temperature must be 0.1 for factual responses",
+      "Max tokens controlled to prevent runaway costs",
+      "System prompt enforces context-only answering",
+      "Never expose API key to frontend",
+      "Implement retry logic with exponential backoff"
+    ]
+  },
+  "rag": {
+    "framework": "LlamaIndex",
+    "vectorDB": "Qdrant",
+    "vectorDBMode": "self-hosted",
+    "rules": [
+      "Chunk size: 500-800 tokens",
+      "Top-K retrieval: 5 chunks",
+      "Similarity threshold required before answering",
+      "Store full metadata with each chunk",
+      "Support re-indexing without data loss"
+    ]
+  },
+  "ingestion": {
+    "supportedTypes": ["pdf", "docx", "txt", "md"],
+    "chunkSizeTokens": {
+      "min": 500,
+      "max": 800
+    },
+    "chunkOverlap": 50,
+    "embeddingModel": "text-embedding-3-large",
+    "topK": 5,
+    "metadataFields": [
+      "docId",
+      "source",
+      "chunkId",
+      "category",
+      "version",
+      "uploadedAt"
+    ],
+    "rules": [
+      "Validate file type and size before processing",
+      "Extract text while preserving structure",
+      "Generate unique IDs for documents and chunks",
+      "Handle encoding issues gracefully",
+      "Support batch ingestion"
+    ]
+  },
+  "chatbot": {
+    "answerMode": "context_only",
+    "allowExternalKnowledge": false,
+    "temperature": 0.1,
+    "fallbackMessage": "This information is not available in the current knowledge base",
+    "rules": [
+      "Embed user question using same model as documents",
+      "Search Qdrant for top-K similar chunks",
+      "Validate similarity score against threshold",
+      "If below threshold, return fallback message",
+      "If above threshold, generate answer from context only",
+      "Always cite source documents in response"
+    ]
+  },
+  "chatFlow": [
+    "embed_question",
+    "search_qdrant",
+    "validate_similarity",
+    "generate_answer"
+  ],
+  "security": {
+    "authentication": "jwt",
+    "rules": [
+      "JWT tokens for all authenticated routes",
+      "Rate limiting: 100 req/min for chat, 10 req/min for upload",
+      "File validation: type, size (max 50MB), content scanning",
+      "OpenAI key stored in environment variables only",
+      "CORS configured for production domains only",
+      "Input sanitization on all user inputs",
+      "SQL injection prevention (if using SQL)",
+      "XSS prevention in responses"
+    ]
+  },
+  "navigation": [
+    {
+      "name": "Dashboard",
+      "path": "/dashboard",
+      "icon": "LayoutDashboard"
+    },
+    {
+      "name": "Knowledge Base",
+      "path": "/knowledge-base",
+      "icon": "Database"
+    },
+    {
+      "name": "Chatbot",
+      "path": "/chatbot",
+      "icon": "MessageSquare"
+    },
+    {
+      "name": "Chat Logs",
+      "path": "/chat-logs",
+      "icon": "History"
+    },
+    {
+      "name": "Settings",
+      "path": "/settings",
+      "icon": "Settings"
+    }
+  ],
+  "settings": {
+    "configurable": [
+      "openai_api_key",
+      "chunk_size",
+      "similarity_threshold",
+      "top_k",
+      "max_tokens"
+    ],
+    "actions": [
+      "reindex_documents",
+      "clear_vector_db",
+      "export_chat_logs"
+    ]
+  },
+  "codeStyle": {
+    "rules": [
+      "Use ESLint + Prettier for formatting",
+      "Meaningful variable and function names",
+      "JSDoc comments for complex functions",
+      "Separate concerns: routes, services, utils",
+      "Use async/await over callbacks",
+      "Proper error boundaries in React",
+      "Environment-based configuration"
+    ]
+  }
+}
