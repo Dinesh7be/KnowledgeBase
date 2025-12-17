@@ -13,6 +13,9 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   title: "Chat Base - Knowledge Base Assistant",
   description: "Private Knowledge Base Chatbot powered by RAG",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
