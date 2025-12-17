@@ -67,7 +67,7 @@ export async function upsertVectors(
 
     await client.upsert(config.qdrant.collection, {
         wait: true,
-        points,
+        points: points as unknown as { id: string; vector: number[]; payload: Record<string, unknown> }[],
     });
 
     console.log(`✅ Upserted ${points.length} vectors for user ${userId}, document: ${source}`);
@@ -95,7 +95,7 @@ export async function searchSimilar(
     return results.map((result) => ({
         id: result.id as string,
         score: result.score,
-        payload: result.payload as VectorPayload,
+        payload: result.payload as unknown as VectorPayload,
     }));
 }
 
