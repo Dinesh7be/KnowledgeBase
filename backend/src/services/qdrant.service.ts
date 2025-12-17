@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 const client = new QdrantClient({ url: config.qdrant.url });
 
 export interface VectorPayload {
+    [key: string]: unknown; // Index signature for Qdrant compatibility
     userId: string; // For per-user isolation
     docId: string;
     source: string;

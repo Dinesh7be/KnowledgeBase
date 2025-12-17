@@ -30,7 +30,8 @@ export async function settingsRoutes(app: FastifyInstance) {
         preHandler: [app.authenticate],
     }, async (request, reply) => {
         const collectionInfo = await getCollectionInfo();
-        const stats = getStats();
+        const user = request.user as { id: string };
+        const stats = getStats(user.id);
 
         return reply.send({
             success: true,
@@ -66,7 +67,7 @@ export async function settingsRoutes(app: FastifyInstance) {
                 return reply.status(400).send({
                     success: false,
                     error: 'Validation error',
-                    details: error.errors,
+                    details: error.issues,
                 });
             }
 
